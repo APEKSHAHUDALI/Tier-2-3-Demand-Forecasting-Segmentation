@@ -4,3 +4,4 @@ scikit-learn
 prophet
 matplotlib
 streamlit
+plotly
