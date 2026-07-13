@@ -2,6 +2,7 @@
 Streamlit dashboard: demand forecast + customer segmentation, side by side.
 Run: streamlit run app.py
 """
+import os
 import streamlit as st
 import pandas as pd
 import matplotlib
@@ -9,6 +10,10 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from forecast import run_forecast
 from segmentation import df as seg_df  # runs segmentation on import (cheap: 20k rows)
+
+if not os.path.exists("data/daily_sales.csv") or not os.path.exists("data/customers.csv"):
+    import subprocess
+    subprocess.run(["python", "data/generate_data.py"], check=True)
 
 st.set_page_config(page_title="Meesho-style Demand & Segmentation Dashboard", page_icon="📈", layout="wide")
 st.title("📈 Tier 2/3 Demand Forecast & Customer Segmentation")

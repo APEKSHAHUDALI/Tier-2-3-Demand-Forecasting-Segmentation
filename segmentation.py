@@ -10,6 +10,7 @@ directly relevant to Meesho's retention/reactivation campaigns.
 Run: python segmentation.py
 Outputs: rfm_segments.csv, segment_plot.png
 """
+import os
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
@@ -17,6 +18,10 @@ from sklearn.cluster import KMeans
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+
+if not os.path.exists("data/customers.csv"):
+    import subprocess
+    subprocess.run(["python", "data/generate_data.py"], check=True)
 
 df = pd.read_csv("data/customers.csv")
 

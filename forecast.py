@@ -10,11 +10,16 @@ capital locked up in Tier 2/3 warehouses).
 Run: python forecast.py --city_tier Tier2 --category Sarees --horizon 60
 """
 import argparse
+import os
 import pandas as pd
 from prophet import Prophet
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+
+if not os.path.exists("data/daily_sales.csv"):
+    import subprocess
+    subprocess.run(["python", "data/generate_data.py"], check=True)
 
 FESTIVE_WINDOWS_2024_2026 = [
     ("2024-01-14", "2024-01-20"), ("2024-04-09", "2024-04-17"),
