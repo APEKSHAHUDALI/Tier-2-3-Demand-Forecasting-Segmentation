@@ -32,8 +32,7 @@ business questions:
 - **Segmentation:** RFM features → StandardScaler → KMeans (k=4, chosen via
   elbow method), then labeled into business-readable segments (Champions,
   At-Risk High-Value, New/Low-Value Active, Dormant/Churned).
-- **Dashboard:** Streamlit app with tabs for both, so you can show a live demo
-  in an interview instead of static plots.
+- **Dashboard:** Streamlit app with tabs.
 
 ## Run it
 ```bash
